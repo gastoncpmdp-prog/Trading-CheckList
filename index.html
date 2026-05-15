@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Checklist - Dark Mode</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-color: #c9d1d9;
+            --accent-blue: #58a6ff;
+            --accent-orange: #f0883e;
+            --border-color: #30363d;
+            --ema8: #3fb950;
+            --ema21: #58a6ff;
+            --ema50: #f85149;
+            --decision-bg: #21262d;
+        }
+
+        body { 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
+            line-height: 1.6; 
+            color: var(--text-color); 
+            max-width: 900px; 
+            margin: 20px auto; 
+            padding: 20px; 
+            background-color: var(--bg-color); 
+        }
+
+        .container { 
+            background-color: var(--card-bg); 
+            padding: 30px; 
+            border-radius: 12px; 
+            border: 1px solid var(--border-color);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5); 
+        }
+
+        h1 { 
+            color: #fff; 
+            text-align: center; 
+            border-bottom: 2px solid var(--accent-blue); 
+            padding-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        h2 { 
+            color: var(--accent-blue); 
+            border-left: 4px solid var(--accent-blue); 
+            padding-left: 12px; 
+            margin-top: 25px; 
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .step { 
+            margin-bottom: 30px; 
+            padding: 20px; 
+            border: 1px solid var(--border-color); 
+            border-radius: 8px; 
+            background-color: rgba(255,255,255,0.02);
+        }
+
+        .step-title { 
+            font-weight: bold; 
+            font-size: 1.25em; 
+            color: var(--accent-orange); 
+            margin-bottom: 15px; 
+            display: block; 
+        }
+
+        .checklist { list-style: none; padding: 0; }
+
+        .checklist li { 
+            margin-bottom: 12px; 
+            padding: 12px 15px; 
+            background: var(--bg-color);
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .checklist li:hover { border-color: var(--accent-blue); }
+
+        /* Estilo del checkbox manual */
+        .checklist li::before {
+            content: '○';
+            margin-right: 15px;
+            font-size: 1.2em;
+            color: var(--accent-blue);
+            font-family: monospace;
+        }
+
+        /* Estado cuando se hace click */
+        .checklist li.checked {
+            opacity: 0.5;
+            background-color: #090c10;
+        }
+
+        .checklist li.checked::before {
+            content: '✓';
+            color: var(--ema8);
+        }
+
+        .ema-8 { color: var(--ema8); font-weight: bold; } 
+        .ema-21 { color: var(--ema21); font-weight: bold; } 
+        .ema-50 { color: var(--ema50); font-weight: bold; }
+
+        .decision-box { 
+            background-color: var(--decision-bg); 
+            border: 1px dashed var(--accent-orange); 
+            padding: 20px; 
+            margin-top: 20px; 
+            border-radius: 8px;
+        }
+
+        .rule { font-style: italic; color: #8b949e; font-size: 0.9em; margin-bottom: 15px; }
+
+        .warning { 
+            color: var(--ema50); 
+            font-weight: bold; 
+            text-align: center; 
+            margin-top: 40px; 
+            border: 1px solid var(--ema50); 
+            padding: 15px; 
+            border-radius: 8px;
+            background: rgba(248, 81, 73, 0.1);
+        }
+
+        .btn-reset {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: var(--border-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-reset:hover { background: #484f58; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Receta de Cocina</h1>
+
+    <!-- PASO 1 -->
+    <div class="step">
+        <span class="step-title">1. MACRO (D1)</span>
+        <p class="rule">Determinar operabilidad y dirección dominante.</p>
+        
+        <h2>Acción del Precio</h2>
+        <ul class="checklist">
+            <li>Tendencia clara (Máximos y Mínimos crecientes/decrecientes).</li>
+            <li>Madurez del movimiento (¿Inicio, sostenida o movimiento agotado?).</li>
+            <li>Fase: Corrección (1), Continuidad (2) o Agotamiento (3).</li>
+        </ul>
+
+        <h2>Indicadores y Momentum</h2>
+        <ul class="checklist">
+            <li>Alineación/Angulación: <span class="ema-8">-EMA 8</span>, <span class="ema-21">EMA 21</span>, <span class="ema-50">EMA 50</span>.</li>
+            <li>Distancia a <span class="ema-8">-EMA 8</span>-Cerca o Alejado-(¿Hay desconexión?).</li>
+            <li>Bandwidth de Bollinger (¿Expansión o contracción?).</li>
+            <li>Momentum: MACD o AO acompañan el precio.</li>
+            <li>Divergencias presentes?</li>
+        </ul>
+    </div>
+
+    <!-- PASO 2 -->
+    <div class="step">
+        <span class="step-title">2. ESTRUCTURA & SETUP (H1)</span>
+        <p class="rule">Validar el contexto intermedio y buscar interferencias.</p>
+
+        <ul class="checklist">
+            <li>Verificación de Tendencia en H1: ¿Acompaña la dirección decidida en D1?</li>
+            <li>Alineación de EMAs en H1 con buena angulación?</li>
+            <li>Distancia a <span class="ema-8">-EMA 8</span>-Cerca o Alejado-(¿Hay desconexión?).</li>
+            <li>Divergencias visibles para estrategia Péndulo?</li>
+	    <li>Interferencias: Revisar interferencias a TP: Emas (D1)? TP en Fase 3?</li>
+            <li>Reglas del setup confirmadas al 100%.</li>
+        </ul>
+
+        <div class="decision-box">
+            <span style="color: var(--accent-orange);">🛑 DECISIÓN CRÍTICA:</span><br>
+            <ul class="checklist" style="margin-top:10px;">
+                <li>OPCIÓN A: Setup completo en H1 → EJECUTAR (Anular M5).</li>
+                <li>OPCIÓN B: H1 pasa filtro se puede → BAJAR A M5.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PASO 3 -->
+    <div class="step">
+        <span class="step-title">3. Doble Anclaje D1+H1 (M5)</span>
+        <p class="rule">Condiciones de setup.</p>
+
+        <ul class="checklist">
+            <li>Tendencia Micro: ¿Está alineada con las decisiones tomadas en D1 y H1?</li>
+            <li>EMAs de corto plazo: ¿Están alineadas y anguladas correctamente para la operación en M5?</li>
+            <li>Ubicación óptima del precio respecto a las medias.(cerca o lejos)</li>
+            <li>Momentum: ¿Hay fuerza a favor de la operación (MACD, Kenergy, AO)?</li>
+	    <li>Divergencias visibles para estrategia Péndulo?</li>
+            <li>Interferencias: Revisar interferencias a TP: Emas (H1)?</li>
+        </ul>
+    </div>
+
+    <div class="warning">
+        REGLA DE ORO: SI FALLA D1, NO HAY H1. SI FALLA H1, NO HAY M5.
+    </div>
+
+    <button class="btn-reset" onclick="resetChecklist()">Reiniciar Checklist</button>
+</div>
+
+<script>
+    // Seleccionar todos los elementos de la lista
+    const items = document.querySelectorAll('.checklist li');
+
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('checked');
+        });
+    });
+
+    function resetChecklist() {
+        items.forEach(item => {
+            item.classList.remove('checked');
+        });
+    }
+</script>
+
+</body>
+</html>
